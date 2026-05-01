@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fafaf9;
+  --ink: #18181b;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #c7d7bb;
+  color: #131b10;
+}
+
+.grain {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(24,24,27,0.045) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.hairline {
+  border-color: rgba(24, 24, 27, 0.08);
+}

@@ -1,0 +1,30 @@
+export const site = {
+  name: "Manufacturing Green Products",
+  shortName: "MGP",
+  tagline: "Industrial-grade pallets, built green in Fontana, CA.",
+  url: "https://manufacturinggreenproducts.com",
+  phone: "+1-909-555-0184",
+  phoneDisplay: "(909) 555-0184",
+  email: "quotes@mgp-pallets.com",
+  address: {
+    street: "11420 Industrial Way",
+    city: "Fontana",
+    region: "CA",
+    postal: "92337",
+    country: "US",
+  },
+  geo: { lat: 34.0922, lng: -117.435 },
+  hours: [
+    { day: "Mon-Fri", open: "06:00", close: "18:00" },
+    { day: "Sat", open: "07:00", close: "14:00" },
+  ],
+  serviceArea: [
+    "Fontana",
+    "Rancho Cucamonga",
+    "Ontario",
+    "Riverside",
+    "San Bernardino",
+    "Inland Empire",
+    "Los Angeles County",
+  ],
+};

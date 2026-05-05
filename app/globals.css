@@ -2,34 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg: #fafaf9;
-  --ink: #18181b;
-}
-
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-feature-settings: "ss01", "cv11";
+@layer base {
+  body {
+    background-color: #faf9f6;
+    color: #1a1c1a;
+    font-family: var(--font-public-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding-top: 88px;
+  }
+  * {
+    box-sizing: border-box;
+  }
 }
 
-::selection {
-  background: #c7d7bb;
-  color: #131b10;
+.product-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border-color: #2a6b40 !important;
 }
 
-.grain {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(24,24,27,0.045) 1px, transparent 0);
-  background-size: 22px 22px;
+.industry-pill {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.industry-pill:hover {
+  transform: translateY(-2px);
 }
 
-.hairline {
-  border-color: rgba(24, 24, 27, 0.08);
+.nav-link {
+  transition: color 0.2s ease;
+}
+.footer-link {
+  transition: color 0.2s ease;
 }

@@ -1,101 +1,40 @@
-import Link from "next/link";
-import { Phone, EnvelopeSimple, MapPin, Clock } from "@phosphor-icons/react/dist/ssr";
-import { site } from "@/lib/site";
-
-export function Footer() {
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
-    <footer className="border-t hairline bg-zinc-950 text-stone-300">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-stone-50 text-zinc-950 font-mono text-[13px] font-semibold">
-                MGP
-              </span>
-              <span className="text-sm font-medium tracking-tight text-stone-50">
-                Manufacturing Green Products
-              </span>
+    <div className="flex flex-col gap-stack-sm">
+      <h4 className="font-label-caps text-label-caps uppercase text-primary-fixed-dim tracking-[0.12em]">{title}</h4>
+      <ul className="flex flex-col gap-2">
+        {links.map((l) => (
+          <li key={l.label}><a href={l.href} className="footer-link font-body-md text-[14px] text-inverse-on-surface/70 hover:text-primary-fixed-dim transition-colors no-underline">{l.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+export default function Footer() {
+  return (
+    <footer className="block w-full border-t-4 border-primary bg-inverse-surface text-primary-fixed">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-section-padding w-full max-w-container-max mx-auto">
+        <div className="flex flex-col gap-stack-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-primary flex items-center justify-center flex-shrink-0"><span className="font-headline-md text-white text-xs font-black">MGP</span></div>
+            <div className="leading-tight">
+              <div className="font-headline-md font-black text-on-primary text-base">Manufacturing</div>
+              <div className="font-headline-md font-black text-primary-fixed-dim text-base">Green Products</div>
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-stone-400">
-              Fontana&apos;s pallet manufacturer of choice for warehouses,
-              distribution centers, and exporters across the Inland Empire.
-              Built sustainably, delivered the same day.
-            </p>
           </div>
-
-          <div className="md:col-span-3">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
-              Visit
-            </h4>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li className="flex gap-3">
-                <MapPin size={16} weight="bold" className="mt-0.5 shrink-0 text-moss-400" />
-                <span>
-                  {site.address.street}
-                  <br />
-                  {site.address.city}, {site.address.region} {site.address.postal}
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <Clock size={16} weight="bold" className="mt-0.5 shrink-0 text-moss-400" />
-                <span>
-                  Mon–Fri 6a–6p
-                  <br />
-                  Sat 7a–2p
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
-              Contact
-            </h4>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li>
-                <a
-                  href={`tel:${site.phone}`}
-                  className="group inline-flex items-center gap-3 transition-transform active:-translate-y-[1px]"
-                >
-                  <Phone size={16} weight="bold" className="text-moss-400" />
-                  <span className="border-b border-transparent group-hover:border-stone-300">
-                    {site.phoneDisplay}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="group inline-flex items-center gap-3 transition-transform active:-translate-y-[1px]"
-                >
-                  <EnvelopeSimple size={16} weight="bold" className="text-moss-400" />
-                  <span className="border-b border-transparent group-hover:border-stone-300">
-                    {site.email}
-                  </span>
-                </a>
-              </li>
-              <li className="pt-2">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-stone-50 px-5 py-2.5 text-sm font-medium text-zinc-950 transition-transform active:-translate-y-[1px]"
-                >
-                  Request a Quote
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <p className="font-body-md text-[14px] text-inverse-on-surface/60 max-w-xs">Your trusted pallet partner in the Inland Empire. New, recycled, repaired, and custom pallets backed by sustainable forestry practices.</p>
         </div>
-
-        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-zinc-800 pt-6 text-xs text-stone-500 md:flex-row md:items-center">
-          <p>
-            © {new Date().getFullYear()} Manufacturing Green Products. All
-            rights reserved.
-          </p>
-          <p className="font-mono uppercase tracking-[0.14em]">
-            Pallets · Fontana · Inland Empire
-          </p>
+        <FooterColumn title="Products" links={[{ label: 'New Pallets', href: '#products' },{ label: 'Recycled Pallets', href: '#products' },{ label: 'Repaired Pallets', href: '#products' },{ label: 'Custom & Specialty', href: '#products' }]} />
+        <FooterColumn title="Company" links={[{ label: 'About', href: '#about' },{ label: 'Sustainability', href: '#sustainability' },{ label: 'Industries', href: '#industries' },{ label: 'Locations', href: '#locations' },{ label: 'Get a Quote', href: '#quote' }]} />
+        <FooterColumn title="Contact" links={[{ label: '(909) 827-1438', href: 'tel:+19098271438' },{ label: 'mgp@palletmail.com', href: 'mailto:mgp@palletmail.com' },{ label: '8386 Sultana Ave, Fontana CA', href: '#locations' },{ label: '14619 Merrill Ave, Fontana CA', href: '#locations' },{ label: '1326 W Citrus St, Riverside CA', href: '#locations' }]} />
+      </div>
+      <div className="border-t border-outline-variant/20">
+        <div className="max-w-container-max mx-auto px-gutter py-stack-md flex flex-col md:flex-row justify-between gap-stack-sm">
+          <p className="font-body-md text-[13px] text-inverse-on-surface/40">© {new Date().getFullYear()} Manufacturing Green Products. All rights reserved.</p>
+          <p className="font-label-caps text-[12px] uppercase tracking-[0.10em] text-inverse-on-surface/40">ISPM-15 Certified · FSC Member</p>
         </div>
       </div>
     </footer>
-  );
+  )
 }

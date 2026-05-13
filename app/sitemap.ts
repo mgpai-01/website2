@@ -1,12 +1,14 @@
-import type { MetadataRoute } from "next";
-import { site } from "@/lib/site";
+import type { MetadataRoute } from 'next'
+
+const SITE = 'https://www.manufacturinggreenproducts.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  return [
-    { url: `${site.url}/`, lastModified, changeFrequency: "weekly", priority: 1 },
-    { url: `${site.url}/services`, lastModified, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${site.url}/about`, lastModified, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${site.url}/contact`, lastModified, changeFrequency: "monthly", priority: 0.9 },
-  ];
+  const now = new Date()
+  const routes = ['', '#products', '#industries', '#sustainability', '#about', '#locations', '#quote']
+  return routes.map((r) => ({
+    url: `${SITE}/${r ? r : ''}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: r === '' ? 1 : 0.7,
+  }))
 }

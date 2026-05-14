@@ -6,7 +6,7 @@ import {
   Clock,
   Truck,
 } from "@phosphor-icons/react/dist/ssr";
-import { QuoteForm } from "@/components/QuoteForm";
+import QuoteForm from "@/components/QuoteForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
